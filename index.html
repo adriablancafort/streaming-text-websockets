@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming text via Websockets</title>
+</head>
+<body>
+    <h1>Streaming text via Websockets</h1>
+    <p class="streamed-text"></p>
+    <script>
+        const streamedText = document.querySelector('.streamed-text');
+
+        const ws = new WebSocket('ws://127.0.0.1:8765');
+
+        ws.onmessage = (message) => {
+            streamedText.textContent += message.data + " ";
+        };
+    </script>
+</body>
+</html>
